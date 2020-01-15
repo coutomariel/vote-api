@@ -25,7 +25,7 @@ public class Vote implements Serializable{
 	private Long id;
 	
 	@NotNull
-	private LocalDate Created;
+	private LocalDate created;
 	
 	@NotNull
 	@JoinColumn(name = "userId", referencedColumnName = "id")

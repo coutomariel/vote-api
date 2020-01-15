@@ -1,6 +1,7 @@
 package com.coutomariel.vote.controller;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import javax.validation.Valid;
@@ -36,6 +37,12 @@ public class RestaurantController {
 	public ResponseEntity<List<RestaurantResponseDto>> getAllRestaurants() {
 		List<Restaurant> response = service.findAllRestaurants();
 		return ResponseEntity.status(HttpStatus.OK).body(toCollectionResponseDto(response));
+	}
+	
+	@GetMapping("/winner")
+	public ResponseEntity<Optional<Restaurant>> findWinnerRestaurant(){
+		Optional<Restaurant> response = service.findWinnerRestaurant();
+		return ResponseEntity.status(HttpStatus.OK).body(response);
 	}
 	
 	private Restaurant toEntity(RestaurantImputDto dto) {

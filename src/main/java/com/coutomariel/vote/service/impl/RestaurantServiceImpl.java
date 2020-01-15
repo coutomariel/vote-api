@@ -1,6 +1,7 @@
 package com.coutomariel.vote.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,18 @@ public class RestaurantServiceImpl implements RestaurantService{
 	@Override
 	public List<Restaurant> findAllRestaurants() {
 		return repository.findAll();
+	}
+
+	@Override
+	public Optional<Restaurant> findById(Long id) {
+		return repository.findById(id);
+	}
+	
+	
+	@Override
+	public Optional<Restaurant> findWinnerRestaurant() {
+		Long idWinner = repository.findWinnerRestaurant(); 
+		return repository.findById(idWinner);
 	}
 
 }
